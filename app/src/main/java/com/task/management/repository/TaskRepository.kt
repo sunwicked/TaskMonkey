@@ -1,9 +1,7 @@
-package com.task.management
-
-import com.task.management.models.Task
+package com.task.management.repository
 
 
-object TaskRepository:TaskRepositoryContract {
+object TaskRepository: TaskRepositoryContract {
 
     private val tasks =  mutableListOf<Task>()
 

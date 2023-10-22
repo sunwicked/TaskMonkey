@@ -16,9 +16,9 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.task.management.Routes
-import com.task.management.models.Status
-import com.task.management.models.Task
+import com.task.management.navigation.Routes
+import com.task.management.repository.Status
+import com.task.management.repository.Task
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

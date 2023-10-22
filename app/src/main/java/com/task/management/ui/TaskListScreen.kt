@@ -25,7 +25,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.task.management.Routes
+import com.task.management.navigation.Routes
 import com.task.management.models.TaskUi
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")

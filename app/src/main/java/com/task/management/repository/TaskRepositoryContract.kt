@@ -1,6 +1,4 @@
-package com.task.management
-
-import com.task.management.models.Task
+package com.task.management.repository
 
 interface TaskRepositoryContract {
 

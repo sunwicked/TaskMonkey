@@ -1,4 +1,4 @@
-package com.task.management
+package com.task.management.navigation
 
 object Routes {
     const val TASK_LIST_SCREEN = "TaskListScreen"
