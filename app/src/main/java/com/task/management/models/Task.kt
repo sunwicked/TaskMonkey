@@ -4,8 +4,12 @@ data class Task(val title:String, val description:String, val status:Status, val
 
 
 
-sealed class Status{
-    object ToDo:Status()
-    object InProgress:Status()
-    object Done:Status()
+sealed class Status(private val value: String ){
+    object ToDo:Status("To Do")
+    object InProgress:Status("In Progress")
+    object Done:Status("Done")
+
+    fun Status.getValue(): String {
+        return this.value
+    }
 }

@@ -35,9 +35,7 @@ fun TaskScreen(navigation: NavController, onTaskCreated: (task: Task) -> Unit) {
             .fillMaxWidth()
             .fillMaxHeight()
     ) {
-        Text("Task")
-
-        OutlinedTextField(
+             OutlinedTextField(
             modifier = Modifier
                 .padding(4.dp)
                 .fillMaxWidth(),
