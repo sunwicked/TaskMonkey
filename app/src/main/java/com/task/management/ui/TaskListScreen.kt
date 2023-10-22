@@ -10,9 +10,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
+import com.task.management.Routes
 
 @Composable
-fun SecondScreen(navigation: NavController) {
+fun TaskListScreen(navigation: NavController) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -22,7 +23,8 @@ fun SecondScreen(navigation: NavController) {
     ) {
         Text("Second screen")
         Button(onClick = {
-            navigation.popBackStack()
+//            navigation.popBackStack()
+            navigation.navigate(Routes.TASK_SCREEN)
         }) {
             Text(text = "Back to first screen")
         }
