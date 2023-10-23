@@ -10,6 +10,7 @@ import com.task.management.repository.Status.InProgress.getValue
 import com.task.management.repository.Task
 import com.task.management.models.TaskUi
 import com.task.management.repository.TaskRepository
+import com.task.management.ui.Chip
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
@@ -42,6 +43,14 @@ class TaskViewModel(private val taskRepository: TaskRepository) : ViewModel() {
             _tasks.value = taskRepository.getTasks().convert()
         }
 
+    }
+
+    fun filterChip(chip: Chip) {
+        getTasks()
+       val filteredList =  tasks.value.filter {
+            it.status == chip.text
+        }
+        _tasks.value = filteredList
     }
 
     companion object {

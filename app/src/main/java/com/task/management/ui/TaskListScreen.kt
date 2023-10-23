@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -24,14 +25,18 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.task.management.navigation.Routes
 import com.task.management.models.TaskUi
+import com.task.management.navigation.Routes
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun TaskListScreen(navigation: NavController, tasks: List<TaskUi>) {
+fun TaskListScreen(navigation: NavController,
+                   tasks: List<TaskUi>,
+                   chips :List<Chip>,
+                   onChipListUpdated:(chip:Chip)-> Unit) {
 
     Scaffold(
         topBar = {},
@@ -44,30 +49,35 @@ fun TaskListScreen(navigation: NavController, tasks: List<TaskUi>) {
         },
 
         ) {
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .fillMaxHeight(),
+        Column {
+            ChipList(itemsList = chips, onChipListUpdated = onChipListUpdated)
+            Divider(color = Color.Red, thickness = 0.5.dp)
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .fillMaxHeight(),
 
-            ) {
-            val scrollState = rememberLazyListState()
+                ) {
+                val scrollState = rememberLazyListState()
 
-            LazyColumn(
-                modifier = Modifier.fillMaxSize(),
-                state = scrollState
-            ) {
-                items(tasks) {
+                LazyColumn(
+                    modifier = Modifier.fillMaxSize(),
+                    state = scrollState
+                ) {
+                    items(tasks) {
 
-                    TaskListItem(
-                        item = it,
-                        modifier = Modifier.fillMaxWidth()
-                    )
-                    Divider(color = Color.Black, thickness = 1.dp)
+                        TaskListItem(
+                            item = it,
+                            modifier = Modifier.fillMaxWidth()
+                        )
+                        Divider(color = Color.Black, thickness = 1.dp)
+                    }
                 }
+
+
             }
-
-
         }
+
     }
 }
 
@@ -81,12 +91,23 @@ private fun TaskListItem(
         modifier = modifier.padding(16.dp),
         verticalArrangement = Arrangement.spacedBy(4.dp)
     ) {
-        Text(text = item.date)
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
+            Text(text = item.date)
+            Text(
+                text = item.status,
+                fontWeight = FontWeight.Bold
+            )
+        }
         Text(
             text = item.title,
+            fontSize = 30.sp,
             fontWeight = FontWeight.Bold,
         )
-        Text(text = item.description)
-        Text(text = item.status)
+        Text(text = item.description ,
+            fontSize = 20.sp)
+
     }
 }

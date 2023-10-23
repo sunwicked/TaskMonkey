@@ -13,6 +13,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.task.management.navigation.Routes
+import com.task.management.repository.Status.InProgress.getChips
 import com.task.management.ui.TaskScreen
 import com.task.management.ui.TaskListScreen
 import com.task.management.ui.theme.TaskManagementTheme
@@ -40,7 +41,9 @@ class MainActivity : ComponentActivity() {
                     composable(Routes.TASK_LIST_SCREEN) {
                         TaskListScreen(
                             navigation = navController,
-                            tasks = viewModel.tasks.collectAsState().value
+                            tasks = viewModel.tasks.collectAsState().value,
+                            chips = getChips(),
+                            onChipListUpdated = {viewModel.filterChip(it)}
                         )
                     }
                 }
