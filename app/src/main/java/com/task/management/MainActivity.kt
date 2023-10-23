@@ -29,8 +29,8 @@ class MainActivity : ComponentActivity() {
         setContent {
             TaskManagementTheme {
                 val navController = rememberNavController()
-                // A surface container using the 'background' color from the theme
-                NavHost(navController = navController, startDestination = Routes.TASK_SCREEN) {
+
+                NavHost(navController = navController, startDestination = Routes.TASK_LIST_SCREEN) {
                     composable(Routes.TASK_SCREEN) {
                         TaskScreen(navigation = navController,
                             onTaskCreated = {
@@ -43,7 +43,9 @@ class MainActivity : ComponentActivity() {
                             navigation = navController,
                             tasks = viewModel.tasks.collectAsState().value,
                             chips = getChips(),
-                            onChipListUpdated = {viewModel.filterChip(it)}
+                            onChipListUpdated = {viewModel.filterChip(it)},
+                            onDelete = {viewModel.onDelete(it)},
+                            onUpdateStatus = {id, status-> viewModel.onUpdateStatus(id,status)}
                         )
                     }
                 }

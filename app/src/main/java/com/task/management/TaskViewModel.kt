@@ -9,6 +9,8 @@ import com.task.management.di.Injector
 import com.task.management.repository.Status.InProgress.getValue
 import com.task.management.repository.Task
 import com.task.management.models.TaskUi
+import com.task.management.repository.Status
+import com.task.management.repository.Status.InProgress.ofValue
 import com.task.management.repository.TaskRepository
 import com.task.management.ui.Chip
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -53,6 +55,20 @@ class TaskViewModel(private val taskRepository: TaskRepository) : ViewModel() {
         _tasks.value = filteredList
     }
 
+    fun onDelete(id: String) {
+        viewModelScope.launch {
+            taskRepository.delete(id)
+            getTasks()
+        }
+    }
+
+    fun onUpdateStatus(id: String, status: String) {
+        viewModelScope.launch {
+            taskRepository.updateStatus(id,ofValue(status))
+            getTasks()
+        }
+    }
+
     companion object {
 
         val Factory: ViewModelProvider.Factory = object : ViewModelProvider.Factory {
@@ -72,7 +88,8 @@ private fun List<Task>.convert(): List<TaskUi> {
             it.title,
             it.description,
             it.status.getValue(),
-            it.id.convertToDate()
+            it.id.convertToDate(),
+            it.id
         )
 
     }
