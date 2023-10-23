@@ -9,5 +9,5 @@ Jetpack Compose based MVVM Kotlin Android App
 
 
 
-![Alt text](https://github.com/sunwicked/TaskMonkey/blob/main/screenshot/Screenshot_20231022_220345.png "Task List")
-![Alt text](https://github.com/sunwicked/TaskMonkey/blob/main/screenshot/Screenshot_20231022_220307.png "Create Task")
+![Alt text](https://github.com/sunwicked/TaskMonkey/blob/main/screenshot/Screenshot_20231022_220307.png "Task List")
+![Alt text](https://github.com/sunwicked/TaskMonkey/blob/main/screenshot/Screenshot_20231024_031154.png "Create Task")
