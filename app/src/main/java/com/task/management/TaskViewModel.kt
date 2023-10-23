@@ -9,6 +9,7 @@ import com.task.management.di.Injector
 import com.task.management.repository.Status.InProgress.getValue
 import com.task.management.repository.Task
 import com.task.management.models.TaskUi
+import com.task.management.repository.ALL
 import com.task.management.repository.Status
 import com.task.management.repository.Status.InProgress.ofValue
 import com.task.management.repository.TaskRepository
@@ -49,6 +50,7 @@ class TaskViewModel(private val taskRepository: TaskRepository) : ViewModel() {
 
     fun filterChip(chip: Chip) {
         getTasks()
+        if(chip.text == ALL) return
        val filteredList =  tasks.value.filter {
             it.status == chip.text
         }

@@ -5,11 +5,13 @@ import com.task.management.ui.Chip
 data class Task(val title:String, val description:String, val status: Status, val id:String)
 
 
-private const val TO_DO = "To Do"
+ const val TO_DO = "To Do"
 
-private const val IN_PROGRESS = "In Progress"
+ const val IN_PROGRESS = "In Progress"
 
-private const val DONE = "Done"
+ const val DONE = "Done"
+
+ const val ALL = "All"
 
 sealed class Status(private val value: String ){
     object ToDo: Status(TO_DO)
@@ -35,8 +37,12 @@ sealed class Status(private val value: String ){
     }
 
     fun getChips(): List<Chip> {
-        return listOf(Chip(TO_DO,false),
+        return listOf(
+            Chip(ALL,false),
+            Chip(TO_DO,false),
             Chip(IN_PROGRESS,false),
-            Chip(DONE,false))
+            Chip(DONE,false)
+
+        )
     }
 }
