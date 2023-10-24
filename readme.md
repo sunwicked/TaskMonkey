@@ -9,7 +9,8 @@ Jetpack Compose based MVVM Kotlin Android App
 
 
 
-![Task List](/screenshot/Screenshot_20231022_220307.png )
-![Create Task](/screenshot/Screenshot_20231024_031154.png )
+<img src="https://i.imgur.com/aertqsF.png" width="300" height="500"/> <img src="https://i.imgur.com/1m72tLE.png" width="300" height="500"/>
+
+
 
 [![Watch the video]()](https://www.loom.com/share/aea178d45b604b4b8184dea2d52acc43?sid=01820c7c-0d66-46cd-b1bc-9e079000f646)
